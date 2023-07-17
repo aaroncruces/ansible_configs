@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install window manager
+      pacman:
+        name: 
+          - i3-wm
+          - polybar
+          - network-manager-applet
+          - dmenu
+
+

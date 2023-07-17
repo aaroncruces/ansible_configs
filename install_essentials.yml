@@ -1,0 +1,48 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    # display server, not drivers 
+    - name: xorg display server
+      pacman:
+        name:
+        - xorg
+        - xorg-xinit
+        - arandr
+
+    # audio
+    - name: pipewire audio
+      pacman:
+        name: 
+          - pipewire 
+          - lib32-pipewire
+          - wireplumber 
+          - pipewire-audio
+          - pipewire-alsa
+          - pipewire-pulse
+          - pipewire-jack
+          - lib32-pipewire-jack
+          - pulsemixer
+          - alsa-utils
+          
+    # console
+    - name: terminal emulators and essential cli apps
+      pacman:
+        name: 
+          - kitty
+          - tmux
+          - zsh
+          - neovim
+          - nano
+          - vifm
+          - neofetch
+
+    # gui apps
+    - name: gui apps
+      pacman:
+        name: 
+          - firefox
+          - pcmanfm
+          - oxygen-icons
+          - lxappearance
+
