@@ -9,5 +9,9 @@
           - polybar
           - network-manager-applet
           - dmenu
-
+          - picom
+          - feh
+          - polkit
+          - lib32-polkit
+          - polkit-qt5 
 

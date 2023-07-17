@@ -1,0 +1,43 @@
+---
+- hosts: all
+  become: true
+  become_user: aur_builder
+  tasks:
+    - name: install aur helper yay
+      kewlfft.aur.aur:
+        use: makepkg
+        name: 
+          - yay
+
+    - name: zfs dkms 
+      kewlfft.aur.aur:
+        name: 
+          - zfs-dkms
+    - name: zfs systemd services
+      systemd:
+        enabled: true
+        #state: started
+        name: '{{ item }}'
+      with_items:
+        - zfs-import-cache.service
+        - zfs-mount.service
+        - zfs.target
+        - zfs-import.target
+    
+    - name: devel tools
+      kewlfft.aur.aur:
+        name: 
+          - nerd-fonts-meta
+          - vscodium-bin
+
+    - name: other essentials
+      kewlfft.aur.aur:
+        name: 
+          - polkit-dumb-agent-git
+          - zsh-antidote
+          - cava
+          - deemix
+          - f3
+          - onlyoffice-bin
+          - qdirstat
+

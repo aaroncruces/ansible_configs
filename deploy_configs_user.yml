@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - name: install aur helper yay
+      become_user: aaron
+      synchronize:
+        src: configfiles/
+        dest: ~/
